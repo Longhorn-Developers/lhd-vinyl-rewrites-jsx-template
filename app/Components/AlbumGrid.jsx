@@ -1,9 +1,22 @@
 import { Link } from '@tanstack/react-router';
 
-export function AlbumGrid({ albums }) {
+function filterAlbums(albums, filter) {
+    const cleanedFilter = filter ? filter.toLowerCase().trim() : '';
+    if (!cleanedFilter) {
+        return albums;
+    }
+
+    return albums.filter(
+        album => album.title.toLowerCase().includes(cleanedFilter) || album.artist.toLowerCase().includes(cleanedFilter)
+    );
+}
+
+export function AlbumGrid({ albums, filter }) {
+    const filteredAlbums = filterAlbums(albums, filter);
+
     return (
         <ul className='album-grid'>
-            {albums.map(album => (
+            {filteredAlbums.map(album => (
                 <li className='album-grid-item' key={album.id}>
                     <Link to='/albums/$albumId' params={{ albumId: album.id }} className='album-grid-cover-link'>
                         <img
