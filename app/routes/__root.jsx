@@ -1,5 +1,6 @@
 // app/routes/__root.jsx
 import { Outlet, createRootRoute, HeadContent, Scripts } from '@tanstack/react-router';
+import appCss from '../styles/app.css?url';
 
 export const Route = createRootRoute({
     head: () => ({
@@ -32,6 +33,10 @@ export const Route = createRootRoute({
             {
                 href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Flex:opsz,wght@8..144,100;8..144,200;8..144,300;8..144,400;8..144,500;8..144,600;8..144,700;8..144,800;8..144,900;8..144,1000&display=swap',
                 rel: 'stylesheet',
+            },
+            {
+                rel: 'stylesheet',
+                href: appCss,
             },
         ],
     }),
